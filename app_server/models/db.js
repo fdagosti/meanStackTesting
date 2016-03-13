@@ -34,4 +34,8 @@ process.once("SIGTERM", function(){
 }); 
 
 var dbURI = "mongodb://localhost/Loc8r";
+console.log("Node env = "+process.env.NODE_ENV+" mong uri = "+process.env.MONGOLAB_URI);
+if (process.env.NODE_ENV === "production"){
+    dbURI = process.env.MONGOLAB_URI;
+}
 mongoose.connect(dbURI);
