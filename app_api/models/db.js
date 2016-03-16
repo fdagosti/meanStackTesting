@@ -14,6 +14,7 @@ mongoose.connection.on("diconnected", function(){
 var gracefulShutdown = function (msg, callback){
     mongoose.connection.close(function(){
         console.log("Mongoose disconnected through "+msg);
+        callback();
     });
 };
 
@@ -38,4 +39,4 @@ console.log("Node env = "+process.env.NODE_ENV+" mong uri = "+process.env.MONGOL
 if (process.env.NODE_ENV === "production"){
     dbURI = process.env.MONGOLAB_URI;
 }
-mongoose.connect(dbURI);
+mongoose.connect(dbURI); 

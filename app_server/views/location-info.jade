@@ -5,14 +5,14 @@ include _includes/sharedHTMLfunctions
 block content
     .row.page-header
         .col-lg-12
-            h1 Starcups
+            h1= pageHeader.title
     .row
         .col-xs-12.col-md-9
             .row
                 .col-xs-12.col-sm-6
                     p.rating
                         +outputRating(location.rating)
-                    p 41 rue Gay Lussac, 92320 Chatillon
+                    p= location.address
                     .panel.panel-primary
                         .panel-heading
                             h2.panel-title Opening Hours
@@ -43,7 +43,7 @@ block content
                 .col-xs-12
                     .panel.panel-primary.review-panel
                         .panel-heading
-                            a.btn.btn-default.pull-right(href='/location/review/new') Add review
+                            a.btn.btn-default.pull-right(href='/location/#{location._id}/reviews/new') Add review
                             h2.panel-title Customer reviews
                         .panel-body.review-container
                             each review in location.reviews
@@ -53,12 +53,13 @@ block content
                                             span.rating
                                                 +outputRating(review.rating)
                                             span.reviewAuthor #{review.author}
-                                            small.reviewTimeStamp #{review.timestamp}
+                                            small.reviewTimestamp 
+                                                +formatDate(review.createdOn)
                                         .col-xs-12
                                             p !{(review.reviewText).replace(/\n/g, '<br/>')}
         .col-xs-12.col-md-3
-            p.lead Simon's cafe is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.
-            p If you've been and you like it - or if you don't - please leav a review to help other people just like you
+            p.lead #{location.name} #{sidebar.context}
+            p= sidebar.callToAction
 
 
 
