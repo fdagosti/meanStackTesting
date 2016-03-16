@@ -3,7 +3,7 @@ var apiOptions = {
     server: "http://localhost:3000"
 };
 if (process.env.NODE_ENV === "production") {
-    apiOptions.server = "https://safe-depths-79697.herokuapp.com/";
+    apiOptions.server = "https://safe-depths-79697.herokuapp.com";
 }
 
 var renderHomepage = function(req, res, body){
