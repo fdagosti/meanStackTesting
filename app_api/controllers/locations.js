@@ -88,8 +88,6 @@ module.exports.locationsCreate = function(req, res){
             closed: req.body.closed2 
         }]
     }, function(err, location){
-        console.log("db insert result "+err);
-        console.log("db insert result2 "+location);
 
         if (err){
             sendJsonResponse(res, 400, err);
